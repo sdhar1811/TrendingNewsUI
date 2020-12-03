@@ -1,15 +1,15 @@
 <div>
   <div class="container search-container">
-    <div style="display: flex;">
+    <div style="display: flex">
       <div fxLayout="row wrap" fxLayoutAlign="center center">
         <div class="col search-bar">
-          <mat-form-field style="width: 80%;" appearance="outline">
+          <mat-form-field style="width: 80%" appearance="outline">
             <mat-label>Search</mat-label>
             <input
               class="serch-input"
               matInput
               [(ngModel)]="searchInput"
-              placeholder="Enter any location or event in the US"
+              placeholder="Enter event name.."
             />
             <span (click)="searchSubmit()" matSuffix
               ><img src="../../assets/images/searchIcon_l.png"
@@ -18,65 +18,51 @@
         </div>
         <div class="w-100"></div>
 
-        <div class="col-xm-12 col-sm-12 col-md-12 search-result-table">
-          <table class="table">
-            <tbody>
-              <tr
-                *ngFor="let elem of test; let i = index"
-                style="margin: 10px 0px !important;"
-              >
-                <td>
-                  <mat-card
-                    (click)="onClick(elem)"
-                    class="mat-elevation-z4 clickable-mat-card"
+        <div
+          class="col-xm-12 col-sm-12 col-md-12"
+          *ngIf="test !== undefined && test.length > 0 && !searchError"
+        >
+          <mat-card class="search-result-table">
+            <mat-card-title style="text-align: center">
+              Search Results
+            </mat-card-title>
+
+            <mat-card-content>
+              <table class="table">
+                <tbody>
+                  <tr
+                    *ngFor="let elem of test; let i = index"
+                    style="margin: 10px 0px !important"
                   >
-                    <mat-card-content class="card-container">
-                      <mat-label>Content</mat-label>
-                      <mat-label>Location</mat-label>
-                      <mat-label>Type</mat-label>
-                    </mat-card-content>
-                  </mat-card>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                    <td>
+                      <mat-card
+                        (click)="onClick(elem)"
+                        class="mat-elevation-z4 clickable-mat-card"
+                      >
+                        <mat-card-content class="card-container">
+                          <mat-label>Content</mat-label>
+                          <mat-label>Location</mat-label>
+                          <mat-label>Type</mat-label>
+                        </mat-card-content>
+                      </mat-card>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </mat-card-content>
+          </mat-card>
         </div>
-        <!-- <div class="col-xm-12 col-sm-12 col-md-12">
+        <div
+          *ngIf="test === undefined || test.length == 0 || searchError"
+          class="col-xm-12 col-sm-12 col-md-12"
+        >
           <table>
             <tbody>
-              <tr
-                *ngFor="let elem of test; let i = index"
-                style="margin: 10px 0px !important"
-              >
+              <tr style="margin: 10px 0px !important">
                 <td>
-                  <mat-card
-                    (click)="onClick(elem)"
-                    class="mat-elevation-z4 clickable-mat-card"
-                  >
+                  <mat-card>
                     <mat-card-content class="card-container">
-                      <mat-label>City</mat-label>
-                      <mat-label>County</mat-label>
-                    </mat-card-content>
-                  </mat-card>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div> -->
-        <div *ngIf="searchError" class="col-xm-12 col-sm-12 col-md-12">
-          <table>
-            <tbody>
-              <tr
-                *ngFor="let elem of searhcResultLocation; let i = index"
-                style="margin: 10px 0px !important;"
-              >
-                <td>
-                  <mat-card
-                    (click)="onClick(elem)"
-                    class="mat-elevation-z4 clickable-mat-card"
-                  >
-                    <mat-card-content class="card-container">
-                      <mat-label>No Record(s) found</mat-label>
+                      <mat-label>No Record(s) to display</mat-label>
                     </mat-card-content>
                   </mat-card>
                 </td>
@@ -87,13 +73,13 @@
       </div>
       <div
         class="search-filter mat-elevation-z4"
-        style="background-color: white;"
+        style="background-color: white"
       >
-        <h3 style="margin-left: 28px; margin-top: 5px; font-weight: bold;">
+        <h3 style="margin-left: 28px; margin-top: 5px; font-weight: bold">
           Refine Your Search
         </h3>
-        <div style="padding: 10px;">
-          <mat-form-field appearance="outline" style="width: 180px;">
+        <div style="padding: 10px">
+          <mat-form-field appearance="outline" style="width: 180px">
             <mat-label>Date</mat-label>
             <input
               matInput
@@ -107,7 +93,7 @@
             ></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
-          <mat-form-field appearance="outline" style="width: 180px;">
+          <mat-form-field appearance="outline" style="width: 180px">
             <mat-label>News Category</mat-label>
             <mat-select [(value)]="newsCategory">
               <mat-option>None</mat-option>
@@ -116,7 +102,7 @@
               }}</mat-option>
             </mat-select>
           </mat-form-field>
-          <mat-form-field appearance="outline" style="width: 180px;">
+          <mat-form-field appearance="outline" style="width: 180px">
             <mat-label>City</mat-label>
             <mat-select [(value)]="cityInput">
               <mat-option>None</mat-option>

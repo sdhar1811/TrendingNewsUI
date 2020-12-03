@@ -16,7 +16,7 @@ export class SearchComponent implements OnInit {
   searchResultEvent: any;
   searchResultLocation: any;
   searchError: any;
-  test = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5];
+  test = [];
   cityList: any;
   newsCategoryList: any;
   searchInput: string = "";
@@ -67,6 +67,8 @@ export class SearchComponent implements OnInit {
   }
 
   searchSubmit() {
+    this.test.push(1);
+    this.test.push(1);
     this.searchService
       .getSearchResult(
         this.searchInput,

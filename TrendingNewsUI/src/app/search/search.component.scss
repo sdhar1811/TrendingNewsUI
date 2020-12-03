@@ -49,6 +49,9 @@
 //   color: green !important;
 // }
 .search-result-table {
+  height: 480px;
+
   overflow: auto;
-  height: 500px;
+  border: solid lightsteelblue;
+  min-width: 600px;
 }
