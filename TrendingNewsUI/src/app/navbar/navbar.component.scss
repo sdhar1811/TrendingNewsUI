@@ -1,0 +1,37 @@
+.navbar {
+  margin-bottom: 0;
+}
+
+.bg-dark {
+  background-color: #0a9ff5 !important;
+  padding: 0px;
+}
+
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+  color: #000000;
+  background-color: whitesmoke;
+}
+.navbar {
+  height: 50px;
+}
+
+.nav-item {
+  padding: 13px;
+  cursor: pointer;
+}
+
+.nav-item a {
+  color: white;
+}
+.topic {
+  position: relative;
+  padding: 5px;
+  padding-left: 10px;
+  top: 16%;
+  font-size: 25px;
+  font-family: cursive;
+  font-weight: bolder;
+  color: white;
+}

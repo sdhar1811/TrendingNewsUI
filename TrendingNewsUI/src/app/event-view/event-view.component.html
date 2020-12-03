@@ -1,0 +1,79 @@
+<div class="container">
+  <div style="display: flex;">
+    <mat-card style="width: 100%;">
+      <mat-card-title style="text-align: center;">Event Details</mat-card-title>
+      <mat-card-content>
+        <div class="card-content">
+          <mat-label>Content</mat-label>
+          <mat-label>{{ eventData.content }}</mat-label>
+        </div>
+      </mat-card-content>
+      <mat-card-content>
+        <div class="card-content">
+          <mat-label>Date</mat-label>
+          <mat-label>{{ eventData.date }}</mat-label>
+        </div>
+      </mat-card-content>
+      <mat-card-content>
+        <div class="card-content">
+          <mat-label>City</mat-label>
+          <mat-label class="location-clickable" (click)="locationClicked()">{{
+            eventData.location
+          }}</mat-label>
+        </div>
+      </mat-card-content>
+      <mat-card-content>
+        <div class="card-content">
+          <mat-label># of Comments</mat-label>
+          <mat-label>{{ eventData.numberOfComments }}</mat-label>
+        </div>
+      </mat-card-content>
+      <mat-card-content>
+        <div class="card-content">
+          <mat-label>Score</mat-label>
+          <mat-label>{{ eventData.score }}</mat-label>
+        </div>
+      </mat-card-content>
+      <!-- <mat-card-content>
+        <table>
+          <tbody>
+            <tr></tr>
+            <tr>
+              <td>Content</td>
+              <td>mai content huuun!</td>
+              <td></td>
+              <td>Date</td>
+              <td>12/10/2021</td>
+            </tr>
+            <tr>
+              <td>City</td>
+              <td>Tempe</td>
+              <td></td>
+              <td># of Comments:</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <td>Score</td>
+              <td>4</td>
+            </tr>
+            <tr></tr>
+          </tbody>
+        </table>
+      </mat-card-content> -->
+    </mat-card>
+  </div>
+  <!-- <div>
+    <table>
+      <tbody>
+        <tr>
+          <td>Event Content</td>
+          <td>Asjdlaksjdlksad</td>
+        </tr>
+        <tr>
+          <td>Event Content</td>
+          <td>Asjdlaksjdlksad</td>
+        </tr>
+      </tbody>
+    </table>
+  </div> -->
+</div>

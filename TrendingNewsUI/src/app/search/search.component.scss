@@ -1,0 +1,54 @@
+@import "~@angular/material/theming";
+.container {
+  padding-top: 50px;
+  padding-bottom: 10px;
+  color: #405065;
+}
+
+.search-bar {
+  position: relative;
+  left: 10%;
+}
+
+.form-control {
+  box-shadow: 0 10px 40px 0 #b0c1d9;
+}
+.form-control::placeholder {
+  font-family: FontAwesome;
+}
+.card-container {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+}
+.search-container {
+  position: absolute;
+  left: 30%;
+}
+.clickable-mat-card {
+  cursor: pointer;
+  &:hover {
+    @include mat-elevation(8);
+    border: solid rgb(49, 149, 243);
+  }
+}
+.search-filter {
+  margin-left: 9%;
+  width: 250px;
+  height: 300px;
+  border: solid 0.1em ghostwhite;
+  border-radius: 1em;
+}
+.my-form-field.mat-form-field-appearance-legacy .mat-input-element {
+  caret-color: white;
+  color: white;
+}
+// ::ng-deep .mat-focused .mat-form-field-label {
+//   /*change color of label*/
+//   color: green !important;
+// }
+.search-result-table {
+  overflow: auto;
+  height: 500px;
+}
