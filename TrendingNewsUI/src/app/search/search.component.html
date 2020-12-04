@@ -25,6 +25,7 @@
             searchResultEvent.length > 0 &&
             !searchError
           "
+          style="color: darkblue"
         >
           <mat-card class="search-result-table">
             <mat-card-title style="text-align: center">
@@ -41,10 +42,12 @@
                     <td>
                       <mat-card
                         (click)="onClick(elem)"
-                        class="mat-elevation-z4 clickable-mat-card"
+                        class="mat-elevation-z4 clickable-mat-card search-card"
                       >
                         <mat-card-content class="card-container">
                           <mat-label>{{ elem.content }}</mat-label>
+                        </mat-card-content>
+                        <mat-card-content class="location-category-card">
                           <mat-label>{{ elem.city }}</mat-label>
                           <mat-label>{{ elem.category }}</mat-label>
                         </mat-card-content>
@@ -105,20 +108,26 @@
             <mat-label>News Category</mat-label>
             <mat-select [(value)]="newsCategory">
               <mat-option>None</mat-option>
-              <mat-option *ngFor="let elem of newsCategoryList" value="elem">{{
-                elem
-              }}</mat-option>
+              <mat-option
+                *ngFor="let elem of newsCategoryList"
+                value="{{ elem }}"
+                >{{ elem }}</mat-option
+              >
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="outline" style="width: 180px">
             <mat-label>City</mat-label>
             <mat-select [(value)]="cityInput">
               <mat-option>None</mat-option>
-              <mat-option *ngFor="let elem of cityList" value="elem">{{
+              <mat-option *ngFor="let elem of cityList" value="{{ elem }}">{{
                 elem
               }}</mat-option>
             </mat-select>
           </mat-form-field>
+          <div style="display: flex; justify-content: space-around">
+            <button mat-raised-button (click)="applyFilter()">Apply</button>
+            <button mat-raised-button (click)="clearFilter()">Clear</button>
+          </div>
         </div>
       </div>
     </div>
