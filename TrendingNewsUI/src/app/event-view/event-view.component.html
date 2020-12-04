@@ -1,37 +1,40 @@
 <div class="container">
-  <div style="display: flex;">
-    <mat-card style="width: 100%;">
-      <mat-card-title style="text-align: center;">Event Details</mat-card-title>
+  <div style="display: flex">
+    <mat-card style="width: 100%">
+      <mat-card-title style="text-align: center">Event Details</mat-card-title>
+
       <mat-card-content>
         <div class="card-content">
           <mat-label>Content</mat-label>
-          <mat-label>{{ eventData.content }}</mat-label>
+          <mat-label>{{ data.eventData.content }}</mat-label>
         </div>
       </mat-card-content>
       <mat-card-content>
         <div class="card-content">
           <mat-label>Date</mat-label>
-          <mat-label>{{ eventData.date }}</mat-label>
+          <mat-label>{{
+            data.eventData.date.substring(0, data.eventData.date.indexOf("T"))
+          }}</mat-label>
         </div>
       </mat-card-content>
       <mat-card-content>
         <div class="card-content">
           <mat-label>City</mat-label>
           <mat-label class="location-clickable" (click)="locationClicked()">{{
-            eventData.location
+            data.eventData.city
           }}</mat-label>
         </div>
       </mat-card-content>
       <mat-card-content>
         <div class="card-content">
           <mat-label># of Comments</mat-label>
-          <mat-label>{{ eventData.numberOfComments }}</mat-label>
+          <mat-label>{{ data.eventData.numberOfComments }}</mat-label>
         </div>
       </mat-card-content>
       <mat-card-content>
         <div class="card-content">
           <mat-label>Score</mat-label>
-          <mat-label>{{ eventData.score }}</mat-label>
+          <mat-label>{{ data.eventData.score }}</mat-label>
         </div>
       </mat-card-content>
       <!-- <mat-card-content>

@@ -36,18 +36,20 @@ export class SearchComponent implements OnInit {
     this.getCityList();
     this.getNewsCategoryList();
   }
-  onClick(test) {
+  onClick(eventElement) {
+    console.log(eventElement);
     const dialogRef = this.dialog.open(EventViewComponent, {
-      width: "50%",
-      height: "40%",
+      width: "70%",
+      height: "60%",
       data: {
-        location: "test",
+        eventData: eventElement,
       },
     });
   }
   getCityList() {
     this.citySerivce.fetchCityList().subscribe(
       (response) => {
+        console.log(response);
         this.cityList = response;
       },
       (error) => {
@@ -67,8 +69,6 @@ export class SearchComponent implements OnInit {
   }
 
   searchSubmit() {
-    this.test.push(1);
-    this.test.push(1);
     this.searchService
       .getSearchResult(
         this.searchInput,
@@ -80,19 +80,9 @@ export class SearchComponent implements OnInit {
       .subscribe(
         (response) => {
           if (response) {
-            if (response.type === "event") {
-              this.searchResultEvent = [];
-              for (let i = 0; i < response.result.length; i++) {
-                this.searchResultEvent.push(
-                  this.getEventObject(response.result[i])
-                );
-              }
-            } else {
-              for (let i = 0; i < response.result.length; i++) {
-                this.searchResultLocation.push(
-                  this.getLocationObject(response.result[i])
-                );
-              }
+            this.searchResultEvent = [];
+            for (let i = 0; i < response.length; i++) {
+              this.searchResultEvent.push(this.getEventObject(response[i]));
             }
           }
         },
@@ -107,14 +97,15 @@ export class SearchComponent implements OnInit {
   getEventObject(data: any) {
     if (data) {
       return new EventModel(
-        data.title,
         data.content,
         data.date,
         data.city,
         data.county,
         data.state,
         data.numberOfComments,
-        data.score
+        data.score,
+        data.category,
+        data.locationURI
       );
     }
   }

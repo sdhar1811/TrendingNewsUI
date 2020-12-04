@@ -1,49 +1,49 @@
 <div class="container">
-  <div style="display: flex;">
-    <mat-card style="width: 100%; height: 100%;">
-      <mat-card-title style="text-align: center;"
+  <div style="display: flex">
+    <mat-card style="width: 100%; height: 100%">
+      <mat-card-title style="text-align: center"
         >Location Details</mat-card-title
       >
       <mat-card-content>
         <div class="card-content">
           <mat-label>City</mat-label>
-          <mat-label>{{ locationDetails.city }}</mat-label>
+          <mat-label>{{ data.city }}</mat-label>
         </div>
       </mat-card-content>
       <mat-card-content>
         <div class="card-content">
           <mat-label>County</mat-label>
-          <mat-label>{{ locationDetails.county }}</mat-label>
+          <mat-label>{{ data.county }}</mat-label>
         </div>
       </mat-card-content>
       <mat-card-content>
         <div class="card-content">
           <mat-label>State</mat-label>
-          <mat-label>{{ locationDetails.state }}</mat-label>
+          <mat-label>{{ data.state }}</mat-label>
         </div>
       </mat-card-content>
       <mat-card-content>
         <div class="card-content">
           <mat-label>Covid Confirmed Cases</mat-label>
-          <mat-label>{{ locationDetails.covidConfirmedCases }}</mat-label>
+          <mat-label>{{ data.covidConfirmedCases }}</mat-label>
         </div>
       </mat-card-content>
       <mat-card-content>
         <div class="card-content">
           <mat-label>Covid Death</mat-label>
-          <mat-label>{{ locationDetails.covidDeaths }}</mat-label>
+          <mat-label>{{ data.covidDeaths }}</mat-label>
         </div>
       </mat-card-content>
       <mat-card-content>
         <div class="card-content">
           <mat-label>Min Temperature</mat-label>
-          <mat-label>{{ locationDetails.minTemperature }}</mat-label>
+          <mat-label>{{ data.averageMinTemp }}</mat-label>
         </div>
       </mat-card-content>
       <mat-card-content>
         <div class="card-content">
           <mat-label>Max Temperature</mat-label>
-          <mat-label>{{ locationDetails.maxTemperature }}</mat-label>
+          <mat-label>{{ data.averageMaxTemp }}</mat-label>
         </div>
       </mat-card-content>
       <!-- <mat-card-content>

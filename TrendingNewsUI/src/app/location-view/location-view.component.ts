@@ -10,34 +10,12 @@ import { LocationDataService } from "../services/location-data.service";
 })
 export class LocationViewComponent implements OnInit {
   locationDetails: any;
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    public locationService: LocationDataService
-  ) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
   ngOnInit(): void {
-    this.fetchLocationData();
-  }
-  fetchLocationData() {
-    this.locationService
-      .getLocationDetails(this.data.location, this.data.date)
-      .subscribe(
-        (response) => {
-          if (response) {
-            this.locationDetails.city = response.city;
-            this.locationDetails.state = response.state;
-            this.locationDetails.county = response.county;
-            this.locationDetails.covidConfirmedCases =
-              response.covidConfirmedCases;
-            this.locationDetails.covidDeaths = response.covidDeaths;
-            this.locationDetails.minTemperature = response.minTemperature;
-            this.locationDetails.maxTemperature = response.maxTemperature;
-          }
-        },
-        (error) => this.handleError(error)
-      );
-  }
-  handleError(error) {
-    console.log(error);
+    console.log(this.data);
+    this.data = this.data.locationDetails;
+
+    console.log(this.data);
   }
 }
