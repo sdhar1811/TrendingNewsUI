@@ -20,7 +20,11 @@
 
         <div
           class="col-xm-12 col-sm-12 col-md-12"
-          *ngIf="test !== undefined && test.length > 0 && !searchError"
+          *ngIf="
+            searchResultEvent !== undefined &&
+            searchResultEvent.length > 0 &&
+            !searchError
+          "
         >
           <mat-card class="search-result-table">
             <mat-card-title style="text-align: center">
@@ -31,7 +35,7 @@
               <table class="table">
                 <tbody>
                   <tr
-                    *ngFor="let elem of test; let i = index"
+                    *ngFor="let elem of searchResultEvent; let i = index"
                     style="margin: 10px 0px !important"
                   >
                     <td>
@@ -40,9 +44,9 @@
                         class="mat-elevation-z4 clickable-mat-card"
                       >
                         <mat-card-content class="card-container">
-                          <mat-label>Content</mat-label>
-                          <mat-label>Location</mat-label>
-                          <mat-label>Type</mat-label>
+                          <mat-label>{{ elem.content }}</mat-label>
+                          <mat-label>{{ elem.city }}</mat-label>
+                          <mat-label>{{ elem.category }}</mat-label>
                         </mat-card-content>
                       </mat-card>
                     </td>
@@ -53,7 +57,11 @@
           </mat-card>
         </div>
         <div
-          *ngIf="test === undefined || test.length == 0 || searchError"
+          *ngIf="
+            searchResultEvent === undefined ||
+            searchResultEvent.length == 0 ||
+            searchError
+          "
           class="col-xm-12 col-sm-12 col-md-12"
         >
           <table>
@@ -97,7 +105,7 @@
             <mat-label>News Category</mat-label>
             <mat-select [(value)]="newsCategory">
               <mat-option>None</mat-option>
-              <mat-option *ngFor="let elem of testData" value="elem">{{
+              <mat-option *ngFor="let elem of newsCategoryList" value="elem">{{
                 elem
               }}</mat-option>
             </mat-select>
@@ -106,7 +114,7 @@
             <mat-label>City</mat-label>
             <mat-select [(value)]="cityInput">
               <mat-option>None</mat-option>
-              <mat-option *ngFor="let elem of testData" value="elem">{{
+              <mat-option *ngFor="let elem of cityList" value="elem">{{
                 elem
               }}</mat-option>
             </mat-select>

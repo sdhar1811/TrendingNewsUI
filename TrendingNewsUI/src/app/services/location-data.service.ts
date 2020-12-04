@@ -9,10 +9,13 @@ export class LocationDataService {
   constructor(public http: HttpClient) {}
 
   getLocationDetails(location: string, date: string) {
-    let params = new HttpParams();
-    params.set("location", location);
-    params.set("date", date);
-    return this.http.get<any>(environment.apiUrl + "/location", {
+    location = location.substring(location.lastIndexOf("#") + 1);
+    console.log(location);
+    let params = {
+      cityId: location,
+      date: date,
+    };
+    return this.http.get<any>(environment.apiUrl + "/search/location", {
       params: params,
     });
   }

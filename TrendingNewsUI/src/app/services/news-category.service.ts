@@ -11,6 +11,6 @@ export class NewsCategoryService {
     this.http = http;
   }
   fetchNewsCategoryList() {
-    return this.http.get<any>(environment.apiUrl + "/newsCategoryList");
+    return this.http.get<any>(environment.apiUrl + "/getEventCategory");
   }
 }

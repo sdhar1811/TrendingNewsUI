@@ -11,6 +11,6 @@ export class CityService {
     this.http = http;
   }
   fetchCityList() {
-    return this.http.get<any>(environment.apiUrl + "/cityList");
+    return this.http.get<any>(environment.apiUrl + "/getAllCities");
   }
 }
