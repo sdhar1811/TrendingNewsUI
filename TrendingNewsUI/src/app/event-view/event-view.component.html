@@ -1,9 +1,63 @@
 <div class="container">
   <div style="display: flex">
-    <mat-card style="width: 100%">
+    <mat-card style="width: 100%; height: 100%">
       <mat-card-title style="text-align: center">Event Details</mat-card-title>
 
       <mat-card-content>
+        <table class="table table-stripped">
+          <!-- <ng-container matColumnDef="label">
+            <th mat-header-cell *matHeaderCellDef>label</th>
+            <td mat-cell *matCellDef="let element">{{ element.label }}</td>
+          </ng-container>
+
+           Name Column -->
+          <!-- <ng-container matColumnDef="value">
+            <th mat-header-cell *matHeaderCellDef>value</th>
+            <td mat-cell *matCellDef="let element">{{ element.value }}</td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr> -->
+          <tbody>
+            <tr>
+              <td>Content</td>
+              <td>
+                {{ data.eventData.content }}
+              </td>
+            </tr>
+            <tr>
+              <td>Date</td>
+              <td>
+                {{
+                  data.eventData.date.substring(
+                    0,
+                    data.eventData.date.indexOf("T")
+                  )
+                }}
+              </td>
+            </tr>
+            <tr>
+              <td>City</td>
+              <td class="location-clickable" (click)="locationClicked()">
+                {{ data.eventData.city }}
+              </td>
+            </tr>
+            <tr>
+              <td>Comments</td>
+              <td>
+                {{ data.eventData.numberOfComments }}
+              </td>
+            </tr>
+            <tr>
+              <td>Score</td>
+              <td>
+                {{ data.eventData.score }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-card-content>
+
+      <!-- <mat-card-content>
         <div class="card-content">
           <mat-label>Content</mat-label>
           <mat-label>{{ data.eventData.content }}</mat-label>
@@ -36,7 +90,7 @@
           <mat-label>Score</mat-label>
           <mat-label>{{ data.eventData.score }}</mat-label>
         </div>
-      </mat-card-content>
+      </mat-card-content> -->
       <!-- <mat-card-content>
         <table>
           <tbody>

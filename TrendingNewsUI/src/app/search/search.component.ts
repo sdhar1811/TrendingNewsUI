@@ -42,8 +42,8 @@ export class SearchComponent implements OnInit {
   onClick(eventElement) {
     console.log(eventElement);
     const dialogRef = this.dialog.open(EventViewComponent, {
-      width: "70%",
-      height: "60%",
+      width: "50%",
+      height: "40%",
       data: {
         eventData: eventElement,
       },

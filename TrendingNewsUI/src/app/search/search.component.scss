@@ -52,19 +52,20 @@
   height: 480px;
 
   overflow: auto;
-  border: solid lightsteelblue;
+  border: solid aliceblue;
   min-width: 600px;
 }
 .location-category-card {
   display: flex;
   justify-content: space-between;
   border: solid;
-  border-width: thick;
-  border-color: white;
+  border-width: thin;
+  border-color: darkgrey;
   padding: 10px 32px;
   border-radius: 2em;
+  box-shadow: 0px 2px 3px;
 }
 .search-card {
   border-radius: 2em;
-  background-color: #ecf0f3;
+  background-color: inherit;
 }

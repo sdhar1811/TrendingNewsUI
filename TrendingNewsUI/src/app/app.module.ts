@@ -68,6 +68,7 @@ import { DatePipe } from "@angular/common";
     LocationViewComponent,
   ],
   imports: [
+    MatProgressSpinnerModule,
     HttpClientModule,
     A11yModule,
     ClipboardModule,

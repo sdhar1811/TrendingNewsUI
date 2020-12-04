@@ -1,3 +1,4 @@
+import { FooterRowOutlet } from "@angular/cdk/table";
 import { Component, Inject, OnInit } from "@angular/core";
 import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { LocationViewComponent } from "../location-view/location-view.component";
@@ -9,11 +10,44 @@ import { LocationDataService } from "../services/location-data.service";
   styleUrls: ["./event-view.component.scss"],
 })
 export class EventViewComponent implements OnInit {
+  displayedColumns: string[] = ["label", "value"];
+  dataSource: any = [];
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialog: MatDialog,
     public locationService: LocationDataService
-  ) {}
+  ) {
+    this.setTableContent();
+  }
+
+  setTableContent() {
+    let temp = [
+      {
+        label: "Content",
+        value: this.data.content,
+      },
+      {
+        label: "Content",
+        value: this.data.content,
+      },
+      {
+        label: "Content",
+        value: this.data.content,
+      },
+      {
+        label: "Content",
+        value: this.data.content,
+      },
+      {
+        label: "Content",
+        value: this.data.content,
+      },
+      {
+        label: "Content",
+        value: this.data.content,
+      },
+    ];
+  }
 
   ngOnInit(): void {}
 
