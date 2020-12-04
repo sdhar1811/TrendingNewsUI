@@ -12,25 +12,31 @@ export class SearchService {
   constructor(http: HttpClient) {
     this.http = http;
   }
-  getSearchResult(
+  getSearchResultWithFilter(
     keyword: string,
     date: string,
     city: string,
-    category: string,
-    type: string
+    category: string
   ) {
-    let headers = new HttpHeaders();
     let parameters = {
       keyword: keyword,
       date: date,
-      city: city,
+      cityName: city,
       category: category,
-      type: type,
+    };
+
+    console.log(parameters);
+    return this.http.get<any>(environment.apiUrl + "search/event/filter", {
+      params: parameters,
+    });
+  }
+  getSearchResult(keyword: string) {
+    let parameters = {
+      keyword: keyword,
     };
 
     console.log(parameters);
     return this.http.get<any>(environment.apiUrl + "search/event/", {
-      headers: headers,
       params: parameters,
     });
   }

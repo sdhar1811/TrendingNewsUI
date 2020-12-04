@@ -6,6 +6,7 @@ import { CityService } from "../services/city.service";
 import { NewsCategoryService } from "../services/news-category.service";
 import { SearchService } from "../services/search.service";
 import { LocationModel } from "../model/location.model";
+import { DatePipe } from "@angular/common";
 
 @Component({
   selector: "app-search",
@@ -24,12 +25,14 @@ export class SearchComponent implements OnInit {
   newsCategory: string = "";
   cityInput: string = "";
   searchType: string = "event";
+  filterFlag: boolean = false;
 
   constructor(
     public dialog: MatDialog,
     public citySerivce: CityService,
     public newsCategoryService: NewsCategoryService,
-    public searchService: SearchService
+    public searchService: SearchService,
+    public datePipe: DatePipe
   ) {}
 
   ngOnInit() {
@@ -39,8 +42,8 @@ export class SearchComponent implements OnInit {
   onClick(eventElement) {
     console.log(eventElement);
     const dialogRef = this.dialog.open(EventViewComponent, {
-      width: "70%",
-      height: "60%",
+      width: "50%",
+      height: "40%",
       data: {
         eventData: eventElement,
       },
@@ -69,13 +72,34 @@ export class SearchComponent implements OnInit {
   }
 
   searchSubmit() {
+    if (!this.filterFlag) {
+      this.getEventDetails();
+    } else {
+      this.getFilteredEventResults();
+    }
+  }
+  getEventDetails() {
+    this.searchService.getSearchResult(this.searchInput).subscribe(
+      (response) => {
+        if (response) {
+          this.searchResultEvent = [];
+          for (let i = 0; i < response.length; i++) {
+            this.searchResultEvent.push(this.getEventObject(response[i]));
+          }
+        }
+      },
+      (error) => {
+        this.handleError(error);
+      }
+    );
+  }
+  getFilteredEventResults() {
     this.searchService
-      .getSearchResult(
+      .getSearchResultWithFilter(
         this.searchInput,
-        this.dateInput,
+        this.transformDate(this.dateInput),
         this.cityInput,
-        this.newsCategory,
-        this.searchType
+        this.newsCategory
       )
       .subscribe(
         (response) => {
@@ -122,5 +146,30 @@ export class SearchComponent implements OnInit {
         data.covidDeaths
       );
     }
+  }
+  clearFilter() {
+    this.dateInput = "";
+    this.cityInput = "";
+    this.newsCategory = "";
+    this.searchResultEvent = [];
+    this.searchInput = "";
+    this.filterFlag = false;
+  }
+  applyFilter() {
+    if (
+      this.dateInput != "" ||
+      this.cityInput != "" ||
+      this.newsCategory != ""
+    ) {
+      this.filterFlag = true;
+    }
+  }
+
+  transformDate(date: any) {
+    if (date !== undefined && date !== null && date !== "") {
+      let datePipe = new DatePipe("en-us");
+      return datePipe.transform(date, "yyyy-MM-dd");
+    }
+    return "";
   }
 }

@@ -58,6 +58,7 @@ import { NewsCategoryService } from "./services/news-category.service";
 import { HttpClientModule } from "@angular/common/http";
 import { SearchService } from "./services/search.service";
 import { LocationViewComponent } from "./location-view/location-view.component";
+import { DatePipe } from "@angular/common";
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +68,7 @@ import { LocationViewComponent } from "./location-view/location-view.component";
     LocationViewComponent,
   ],
   imports: [
+    MatProgressSpinnerModule,
     HttpClientModule,
     A11yModule,
     ClipboardModule,
@@ -121,7 +123,7 @@ import { LocationViewComponent } from "./location-view/location-view.component";
     MatToolbarModule,
     MatFormFieldModule,
   ],
-  providers: [CityService, NewsCategoryService, SearchService],
+  providers: [CityService, NewsCategoryService, SearchService, DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
