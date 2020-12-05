@@ -40,6 +40,15 @@
                   >
                     <td>
                       <mat-card
+                        [ngClass]="
+                          elem.category === 'Politics'
+                            ? 'politics-bkg'
+                            : elem.category === 'GoogleTrending'
+                            ? 'trending-bkg'
+                            : elem.category === 'Twitter'
+                            ? 'twitter-bkg'
+                            : null
+                        "
                         (click)="onClick(elem)"
                         class="mat-elevation-z4 clickable-mat-card search-card"
                       >
