@@ -13,9 +13,6 @@ export class LocationViewComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
   ngOnInit(): void {
-    console.log(this.data);
     this.data = this.data.locationDetails;
-
-    console.log(this.data);
   }
 }

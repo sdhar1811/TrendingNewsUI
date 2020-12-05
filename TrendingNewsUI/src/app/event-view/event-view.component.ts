@@ -95,7 +95,5 @@ export class EventViewComponent implements OnInit {
       );
   }
 
-  handleError(error) {
-    console.log(error);
-  }
+  handleError(error) {}
 }

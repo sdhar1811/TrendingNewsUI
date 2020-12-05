@@ -40,7 +40,6 @@ export class SearchComponent implements OnInit {
     this.getNewsCategoryList();
   }
   onClick(eventElement) {
-    console.log(eventElement);
     const dialogRef = this.dialog.open(EventViewComponent, {
       width: "50%",
       height: "40%",
@@ -52,7 +51,6 @@ export class SearchComponent implements OnInit {
   getCityList() {
     this.citySerivce.fetchCityList().subscribe(
       (response) => {
-        console.log(response);
         this.cityList = response;
       },
       (error) => {
@@ -115,9 +113,7 @@ export class SearchComponent implements OnInit {
         }
       );
   }
-  handleError(error) {
-    console.log(error);
-  }
+  handleError(error) {}
   getEventObject(data: any) {
     if (data) {
       return new EventModel(

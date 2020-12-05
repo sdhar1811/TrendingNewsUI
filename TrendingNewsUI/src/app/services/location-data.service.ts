@@ -10,7 +10,7 @@ export class LocationDataService {
 
   getLocationDetails(location: string, date: string) {
     location = location.substring(location.lastIndexOf("#") + 1);
-    console.log(location);
+
     let params = {
       cityId: location,
       date: date,

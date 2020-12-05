@@ -25,7 +25,6 @@ export class SearchService {
       category: category,
     };
 
-    console.log(parameters);
     return this.http.get<any>(environment.apiUrl + "search/event/filter", {
       params: parameters,
     });
@@ -35,7 +34,6 @@ export class SearchService {
       keyword: keyword,
     };
 
-    console.log(parameters);
     return this.http.get<any>(environment.apiUrl + "search/event/", {
       params: parameters,
     });
